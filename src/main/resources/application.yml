@@ -1,0 +1,36 @@
+---
+spring:
+  profiles: consumer1
+server:
+  port: 8010
+---
+spring:
+  profiles: consumer2
+server:
+  port: 8011
+---
+management:
+  security:
+    enabled: false
+
+spring:
+  profiles:
+    active: consumer1
+  application:
+    name: microservice-consumer-movie ##注册到Eureka Server上的应用名称
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
+  instance:
+    pre-ip-address: true ##将自己的ip注册到Eureka Server上
+
+#microservice-user-provider: ##配置某个Ribbon Client 如果不加此前缀，则配置所有的Ribbon Client
+#  ribbon:
+#    listOfServers: localhost:8000,localhost:8001
+
+#ribbon:
+#  eureka:
+#    enabled: false

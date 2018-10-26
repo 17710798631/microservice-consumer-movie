@@ -1,0 +1,28 @@
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    config:
+      name: microservice-foo
+#      uri: http://localhost:8080/
+      profile: pro
+      label: master
+      discovery:
+        # 表示使用服务发现组件中的Config Server,而不是自己指定的Config Server的uri(spring.cloud.config.uri),默认false
+        enabled: true
+        # 指定Config Server在服务发现中的serviceId，默认是configServer
+        service-id: microservice-config-server
+#  service-registry:
+#      auto-registration:
+#        enabled: true ## 是否将服务注册到Eureka Server,默认为true
+
+
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
+#  instance:
+#   pre-ip-address: true ##将自己的ip注册到Eureka Server上
